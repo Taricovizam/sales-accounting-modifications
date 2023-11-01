@@ -1,0 +1,278 @@
+<style>
+.disabled {
+  user-select: none;
+  pointer-events: none;
+  background-color: dimgrey;
+  opacity: .5;
+}
+
+
+    .unpaid-invs{
+       background-color: #e63946;
+     
+     }
+    .open-quot{
+       background-color: #ebcd16;
+      
+    }
+    .new-request{
+       background-color: #35b41f;
+  left: 25px !important;
+    }
+    
+    .indicator {
+        border-radius: 50%;
+      top: 13px;
+        left: 50px;
+        /* padding: 4px 3px; */
+        position: absolute;
+        width: 19px;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 500;
+        text-align: center;
+        height: 19px;
+        padding-top: 2.9px;
+        box-shadow: 1px 1px 4px #00000033;
+    }
+    
+        .notify-red::after {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #e63946;
+            top: 21px;
+            left: 68px;
+            position: absolute;
+            animation: blinker 1s ease-in-out infinite;
+        }
+.notify-yellow::after {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #ebcd16;
+            top: 21px;
+            left: 58px;
+            position: absolute;
+            animation: blinker 1s ease-in-out infinite;
+        }
+    .notify-green::after {
+            content: "";
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #35b41f;
+            top: 21px;
+            left: 48px;
+            position: absolute;
+            animation: blinker 1s ease-in-out infinite;
+        }
+
+        @keyframes blinker {
+    
+            0%,
+            100% {
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+        }
+    
+    #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(4), #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(5), #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(6){
+    transition:.3s;
+    }
+    #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(4):hover, #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(5):hover, #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(6):hover{
+    background:#eaeaea57;
+    }
+    
+    #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(4){
+    background:#3c8ace17;
+    }
+    #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(5){
+    background:#ff2c2c0d;
+    }
+    #main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li:nth-child(6){
+    background:#ef00dc08;
+    }
+    </style>
+    <script>
+    const newAccordion = `
+    <li class="super-menu mn_2 daftra-tanqeeb" onclick="sideMenuClick(this,event)" data-menu-item-id="11" data-app-sidebar-list-item="11">
+    
+    <a target="_blank" href="#" class="menu-item receipt"><i class="list-icon mdi mdi-receipt"></i> <span>مبيعات تنقيب</span><i class="mdi mdi-chevron-down"></i></a> 
+    <div class="sub-menu-cont" style="display: none;"> 
+    <ul class="left sub-menu "> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1" style="position:relative"> 
+    <a target="_blank" href="https://daftra-tanqeeb.daftra.com/owner/invoices/index?payment_status=0" class="view-invoices" onclick="subSideMenuClick(event)"> إدارة الفواتير </a> 
+    <!-- <span class="indicator daftra-tanqeeb unpaid-invs"></span>  -->
+    </li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1"> 
+    <a target="_blank" href="https://daftra-tanqeeb.daftra.com/owner/invoices/add" class="create-invoice" onclick="subSideMenuClick(event)"> إنشاء فاتورة </a> </li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1" style="position:relative"> 
+    <a target="_blank" href="https://daftra-tanqeeb.daftra.com/owner/invoices/estimates?payment_status=0" class="estimates" onclick="subSideMenuClick(event)"> إدارة عروض الأسعار </a> 
+    <span class="indicator daftra-tanqeeb open-quot"></span> 
+    <!-- <span class="indicator daftra-tanqeeb new-request"></span> -->
+    </li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1"> 
+    <a target="_blank" href="https://daftra-tanqeeb.daftra.com/owner/invoices/add_estimate" class="" onclick="subSideMenuClick(event)"> إنشاء عرض سعر </a> </li> 
+    </ul> 
+    </div> 
+    </li>
+    
+    <li class="super-menu mn_2 mn_invoices daftraeginvoice" onclick="sideMenuClick(this,event)" data-menu-item-id="12" data-app-sidebar-list-item="12">
+    
+    <a target="_blank" href="#" class="menu-item receipt"><i class="list-icon mdi mdi-receipt"></i> <span>مبيعات مصر</span><i class="mdi mdi-chevron-down"></i></a> 
+    <div class="sub-menu-cont" style="display: none;"> 
+    <ul class="left sub-menu "> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1" style="position:relative"> 
+    <a target="_blank" href="https://daftraeginvoice.daftra.com/owner/invoices/index?payment_status=0" class="view-invoices" onclick="subSideMenuClick(event)"> إدارة الفواتير </a> 
+    <!-- <span class="indicator daftraeginvoice unpaid-invs"></span> -->
+    </li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1"> 
+    <a target="_blank" href="https://daftraeginvoice.daftra.com/owner/invoices/add" class="create-invoice" onclick="subSideMenuClick(event)"> إنشاء فاتورة </a> </li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1" style="position:relative"> 
+    <a target="_blank" href="https://daftraeginvoice.daftra.com/owner/invoices/estimates?payment_status=0" class="estimates" onclick="subSideMenuClick(event)" > إدارة عروض الأسعار </a> 
+    <span class="indicator daftraeginvoice open-quot"></span> 
+    <!--<span class="indicator daftraeginvoice new-request"></span> -->
+    </li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1"> 
+    <a target="_blank" href="https://daftraeginvoice.daftra.com/owner/invoices/add_estimate" class="" onclick="subSideMenuClick(event)"> إنشاء عرض سعر </a> </li> 
+    </ul> 
+    </div> 
+    </li>
+ <li class="super-menu mn_2 mn_invoices" onclick="sideMenuClick(this,event)" data-menu-item-id="12" data-app-sidebar-list-item="12">
+    
+    <a target="_blank" href="#" class="menu-item receipt"><i class="list-icon mdi mdi-receipt"></i> <span>خدمات محاسبية</span><i class="mdi mdi-chevron-down"></i></a> 
+    <div class="sub-menu-cont" style="display: none;"> 
+    <ul class="left sub-menu ">
+<li data-app-sidebar-list-item-sublist-item-group-id="4" class="">
+<a href="https://daftraadmin.daftara.com/v2/owner/entity/le_workflow-type-entity-2/create" class="accounting-under-review" onclick="subSideMenuClick(event)">
+إنشاء طلب جديد</a>
+</li> 
+    <li data-app-sidebar-list-item-sublist-item-group-id="1" style="position:relative"> 
+    <a target="_blank" href=""  class="view-new-requests accounting-pending" onclick="subSideMenuClick(event)"> طلبات جديدة</a> 
+    <span class="indicator daftraadmin new-request"></span> 
+    </li> 
+<li data-app-sidebar-list-item-sublist-item-group-id="4" class="">
+<a href="" class="accounting-under-review" onclick="subSideMenuClick(event)">
+تحت المراجعة</a>
+</li>
+<li data-app-sidebar-list-item-sublist-item-group-id="4" class="">
+<a href="" class="accounting-post-review" onclick="subSideMenuClick(event)">
+إرسال فاتورة</a>
+</li>
+<li data-app-sidebar-list-item-sublist-item-group-id="4" class="">
+<a href="" class="accounting-invoices-review" onclick="subSideMenuClick(event)">
+فواتير معلقة</a>
+</li>
+    <li data-app-sidebar-list-item-sublist-item-group-id="1"> 
+    <a target="_blank" href="" class="accounting-sales" onclick="subSideMenuClick(event)">تقارير المبيع</a> </li>
+</ul>
+</div>
+</li>
+
+<li class="super-menu mn_4 mn_workflows" onclick="sideMenuClick(this,event)" data-menu-item-id="195" data-app-sidebar-list-item="195">
+<a href="#" class="menu-item mdi mdi-"><i class="list-icon mdi mdi-clipboard-text-outline"></i><span>المردودات</span><i class="mdi mdi-chevron-down arrow-down"></i></a>
+<div class="sub-menu-cont " style="display: none;">
+<ul class="sub-menu left">
+<li data-app-sidebar-list-item-sublist-item-group-id="4" class="">
+<a href="/v2/owner/entity/workflow/le_workflow-type-entity-1/list" class="&quot;view-clients&quot;" onclick="subSideMenuClick(event)">إدارة Refunds</a>
+</li>
+<li data-app-sidebar-list-item-sublist-item-group-id="4" class="">
+<a href="/v2/owner/workflow/settings" class="&quot;&quot;" onclick="subSideMenuClick(event)">
+الإعدادات
+</a></li>
+</ul>
+</div>
+</li>
+
+    `
+    
+    
+    //=========================== variables ========================
+const spinner = `<svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-dasharray="15" stroke-dashoffset="15" stroke-linecap="round" stroke-width="2" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></svg>`
+    let userObj = {}
+    const ADMIN_API_KEY = "65267f407715a83734ff774d10c5572648c3be5b"
+    const TANQEEB_API_KEY = "8133c4a4023ef3d3b8ee47bd85c2fe7a2393e16e"
+    const EG_API_KEY = "2b97b6a64d120fdb53de70b42d72684471b07be0"
+  const sitesObj = {"daftraadmin": ADMIN_API_KEY, "daftraeginvoice": EG_API_KEY, "daftra-tanqeeb": TANQEEB_API_KEY }  
+
+    function whoIsTheCurrentUser(){
+    return USER.staff_id
+    }
+function userInfo(){
+userObj["daftraadmin"]= whoIsTheCurrentUser()
+const thisUserEmail = $.ajax({url:"https://daftraadmin.daftra.com/v2/api/entity/staff/"+whoIsTheCurrentUser(), headers:{apikey:ADMIN_API_KEY }}).done(data=>userObj["userEmail"]= data.email_address)
+return thisUserEmail 
+
+}
+function userOtherInfo(domain, apik){
+const otherInfo = $.ajax({url:`https://${domain}.daftra.com/v2/api/entity/staff/list/1?filter[email_address]=${userObj["userEmail"]}`, headers:{apikey:apik}}).done(data=>userObj[domain]=data.data[0].id).done(()=>localStorage.setItem("thisUser", JSON.stringify(userObj)))
+return otherInfo 
+}
+
+function checkUser(){
+const currentUser = JSON.parse(localStorage.getItem("thisUser"))
+if(+currentUser == +whoIsTheCurrentUser()){
+userObj = currentUser 
+console.log("no", currentUser, userObj)
+}else{
+$.each(Object.entries(sitesObj), (_,d)=> userOtherInfo(d[0],d[1]))
+}
+$("a.view-new-requests").attr("href", `https://daftraadmin.daftra.com/owner/invoices/estimates?payment_status=-1&staff_id=${userObj["daftraadmin"]}`)
+$("a.accounting-sales").attr("href", `https://daftraadmin.daftra.com/contents/process_content/report-accounting?staff_data=${JSON.stringify(userObj)}`)
+
+
+$("a.accounting-pending").attr("href", `https://daftraadmin.daftara.com/v2/owner/entity/workflow/le_workflow-type-entity-2/list?status=47&staff_id=${userObj["daftraadmin"]}`)
+$("a.accounting-under-review").attr("href", `https://daftraadmin.daftara.com/v2/owner/entity/workflow/le_workflow-type-entity-2/list?status=48&staff_id=${userObj["daftraadmin"]}`)
+$("a.accounting-post-review").attr("href", `https://daftraadmin.daftara.com/v2/owner/entity/workflow/le_workflow-type-entity-2/list?status=50&staff_id=${userObj["daftraadmin"]}`)
+$("a.accounting-invoices-review").attr("href", `https://daftraadmin.daftara.com/v2/owner/entity/workflow/le_workflow-type-entity-2/list?status=49&staff_id=${userObj["daftraadmin"]}`)
+$("#main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li.super-menu.mn_3.mn_workflows").addClass("disabled")
+}
+    
+    function GETestimates(domain, apik, id){
+    $.ajax({url:`https://${domain}.daftra.com/v2/api/entity/estimate/list/1?filter[payment_status]=0&filter[staff_id]=${id}`, headers:{apikey:apik}}).done(data=>{
+$(`span.${domain}.open-quot`).text(data.total)
+data.total > 0 && $(`li.${domain}`).addClass("notify-yellow")
+})
+    $.ajax({url:`https://${domain}.daftra.com/v2/api/entity/estimate/list/1?filter[payment_status]=-1&filter[staff_id]=${id}`, headers:{apikey:apik}}).done(data=>{
+$(`span.${domain}.new-request`).text(data.total)
+data.total > 0 && $(`li.${domain}`).addClass("notify-green")
+})
+    }
+    function GETAdminInvoices(){
+    $.ajax({url:`https://daftraadmin.daftra.com/v2/api/entity/invoice/list/1?filter[payment_status]=0&filter[staff_id]=${userObj["daftraadmin"]}`, headers:{apikey:sitesObj["daftraadmin"]}}).done(data=>{
+console.log(data, `https://daftraadmin.daftra.com/v2/api/entity/invoice/list/1?filter[payment_status]=0&filter[staff_id]=${userObj["daftraadmin"]}`)
+$(`span.daftraadmin.unpaid-invs`).text((data.data.filter(d=>d.type != 3)).length)
+})
+    }
+    
+    $(document).ready(()=>{
+    const url = location.pathname
+    
+    if(url.includes("/owner/expenses/index") || whoIsTheCurrentUser() == 32 || whoIsTheCurrentUser() == 35 || whoIsTheCurrentUser() == 35){
+
+$("#main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li.super-menu.mn_2.mn_invoices > div > ul > li:nth-child(1)").css("position", "relative").append('<span class="indicator daftraadmin unpaid-invs"></span>')
+$("#main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li.super-menu.mn_2.mn_invoices > div > ul > li:nth-child(3)").css("position", "relative").append('<span class="indicator daftraadmin open-quot"></span><span class="indicator daftraadmin new-request"></span>')
+
+    $("#main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li.super-menu.mn_2.mn_invoices > a > span").text("مبيعات أدمن")
+   $("#main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li.super-menu.mn_2.mn_invoices").addClass("daftraadmin")
+
+    $("#main-nav > div.prim-nav.main-nav.nav-scroll.clearfix.app-manager-dropdown-container > div.simplebar-wrapper > div.simplebar-mask > div > div > div > div > ul > li.super-menu.mn_2.mn_invoices").after(newAccordion)
+$("span.indicator").html(spinner)
+
+ userInfo().then(()=>checkUser())
+    const userInterval = setInterval(()=>{
+if(userObj){
+clearInterval(userInterval)
+$.each(Object.entries(sitesObj), (_,d)=> GETestimates(d[0],d[1], userObj[d[0]]))
+GETAdminInvoices()
+}
+},300)
+    }
+    })
+    </script>
